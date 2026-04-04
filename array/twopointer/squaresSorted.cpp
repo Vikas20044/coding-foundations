@@ -1,26 +1,25 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
 using namespace std;
 vector<int> squaresSorted(vector<int> nums){
-      int l=0,r=nums.size()-1;
-      while(l<r){
-            int le=abs(nums[l])*abs(nums[l]);
-            int re=abs(nums[r])*abs(nums[r]);
-            if(le>re){
-                  nums.push_back(le);
-                  nums.erase(nums.begin()+l);
-
+      int l=0,r=nums.size()-1,idx=0;
+      vector<int> res;
+      while(l<=r){
+            if(abs(nums[l])>abs(nums[r])){
+                  res.insert(res.begin(),pow(nums[l],2));
+                  l++;
             }
             else{
-                  l++;
+                  res.insert(res.begin(),pow(nums[r],2));
                   r--;
             }
-
+            
       }
-      return nums;
+      return res;
 }
 int main(){
-      vector<int> n={-4,-1,0,3,10};
+      vector<int> n={-7,-3,2,3,11};
       vector<int> res=squaresSorted(n);
       for(int i: res) cout << i << " ";
 
