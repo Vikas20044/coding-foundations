@@ -3,7 +3,7 @@
 #include <math.h>
 using namespace std;
 vector<int> squaresSorted(vector<int> nums){
-      int l=0,r=nums.size()-1,idx=0;
+      int l=0,r=nums.size()-1;
       vector<int> res;
       while(l<=r){
             if(abs(nums[l])>abs(nums[r])){
