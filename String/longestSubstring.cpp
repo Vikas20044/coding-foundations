@@ -4,8 +4,19 @@
 using namespace std;
 int longestSubstring(string s){
       int maxlength=0;
-      int l=0,r=s.size()-1;
+      int l=0;
       unordered_set<char> seen;
+
+      for(int r=0; r<s.size(); r++){
+            if(seen.count(s[r])){
+                  seen.erase(s[r]);
+                  l++;
+            }
+            seen.insert(s[r]);
+            maxlength=max(maxlength,r-l+1);
+      }
+
+      /*
 
       while(l<=r){
             int cmax=0;
@@ -26,9 +37,10 @@ int longestSubstring(string s){
             maxlength=max(maxlength,cmax);
             l++;
       }
+      */
       return maxlength;
 }
 int main(){
-      string s="pwwe";
+      string s="pwwkew";
       cout << longestSubstring(s);
 }
