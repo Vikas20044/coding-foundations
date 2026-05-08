@@ -1,21 +1,17 @@
 #include <iostream>
 #include <vector>
 using namespace std;
-int buyStock(vector<int> nums){
-      int res=0;
-      int minm=nums[0];
-      for(int i=1; i<nums.size(); i++){
-            
-            minm=min(nums[i],minm);
-            int cres=nums[i]-minm;
-            res=max(cres,res);
-
-
+int maxProfit(vector<int> prices){
+      
+      int result=0,minimum=prices[0];
+      for(int i=1; i<prices.size()-1; i++){
+            minimum=min(minimum,prices[i]);
+            int cprofit=prices[i]-minimum;
+            result=max(result,cprofit);
       }
-      return res;
-} 
-
+      return result;
+}
 int main(){
-      vector<int> n={7, 10, 1, 3, 6, 9, 2};
-      cout << buyStock(n);
+      vector<int> p={7,1,5,3,6,4};
+      cout << maxProfit(p);
 }
