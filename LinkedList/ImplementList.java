@@ -1,5 +1,5 @@
 class ImplementList{
-      public static ListNode createNode(int val,ListNode head){
+      public static ListNode insertAtEnd(int val,ListNode head){
             ListNode newNode = new ListNode(val);
             if(head==null){
                   head=newNode;
@@ -13,33 +13,32 @@ class ImplementList{
             return head;
 
       }
-      public static void displayNode(ListNode head){
+
+      public static ListNode insertAtBeg(int val,ListNode head){
+            ListNode newNode = new ListNode(val);
             if(head==null){
-                  System.out.println("List is empty");
-                  return;
-
+                  head=newNode;
+                  return head;
             }
-            ListNode temp=head;
-            while(temp!=null){
-                  System.out.print(temp.val+" ");
-                  temp=temp.next;
-            }
-
+            newNode.next=head;
+            head=newNode;
+            return head;
       }
       public static void main(String[] args) {
             ListNode head=null;
 
             //Create Node    
-            head=createNode(10,head);
-            head=createNode(20,head);
-            head=createNode(30,head);
-            head=createNode(40,head);
-            head=createNode(50,head);
+            head=insertAtEnd(10,head);
+            head=insertAtEnd(20,head);
+            head=insertAtEnd(30,head);
+            head=insertAtEnd(40,head);
+            head=insertAtEnd(50,head);
 
 
             //display
-            displayNode(head);
-
+            ListUtils.displayNode(head);
+            head=insertAtBeg(5, head);
+            ListUtils.displayNode(head);
       
       }
 }
