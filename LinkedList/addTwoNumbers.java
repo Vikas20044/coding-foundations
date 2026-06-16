@@ -1,81 +1,33 @@
 public class addTwoNumbers{
       public static ListNode addNumber(ListNode l1, ListNode l2){
-            ListNode head=null;
-            boolean flag=false;
-            ListNode t1=l1,t2=l2;
-            int add;
-            while(t1!=null && t2!=null){
-                  if(flag){
-                        add = t1.val + t2.val+1;
-                                             
-                  }
-                  else{
-                        add = t1.val+t2.val;
-                  }
-                  
-                  if(add>9){
-                        flag=true;
-                        add=add%10;
-                        head=insertAtEnd(add, head);
-                       
-                  }
-                  else{
-                        head=insertAtEnd(add, head);
-                        flag=false;
-                  }
-                  t1=t1.next;
-                  t2=t2.next;
-            }
-            while(t1!=null){
-                  add=t1.val;
-                  if(flag){
-                        add=add+1;
-                        if(add>9){
-                              flag=true;
-                              add=add%10;
-                              head=insertAtEnd(add, head);
-                        }
-                        else{
-                              head=insertAtEnd(add, head);
-                              flag=false;
-                        }
-                  }
-                  else{
-                        head=insertAtEnd(add, head);
-                  }
-                  
-                  t1=t1.next;
+            ListNode dummy =new ListNode(0);
 
-            }
-            while(t2!=null){
-                  add=t2.val;
-                  if(flag){
-                        add=add+1;
-                        if(add>9){
-                              flag=true;
-                              add=add%10;
-                              head=insertAtEnd(add, head);
-                        }
-                        else{
-                              head=insertAtEnd(add, head);
-                              flag=false;
-                        }
-                  }
-                  else{
-                        head=insertAtEnd(add, head);
-                  }
-                  
-                  t2=t2.next;
-            }
-            if(t1==null && t2==null && flag==true){
-                  head=insertAtEnd(1, head);
-            }
-            return head;
+            ListNode tail = dummy;
+            int carry=0;
 
+            while(l1!=null || l2!=null || carry==1){
+                  int sum = carry;
 
+                  if(l1!=null){
+                        sum+=l1.val;
+                        l1=l1.next;
+                  }
+                  if(l2!=null){
+                        sum+=l2.val;
+                        l2=l2.next;
+                  }
+
+                  carry =sum/10;
+                  sum%=10;
+
+                  tail.next = new ListNode(sum);
+                  tail = tail.next;
+            }
+            return dummy.next;
       }
+            
 
-    public static ListNode insertAtEnd(int val,ListNode head){
+      public static ListNode insertAtEnd(int val,ListNode head){
             ListNode newNode = new ListNode(val);
             if(head==null){
                   head=newNode;
