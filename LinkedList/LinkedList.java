@@ -1,5 +1,3 @@
-
-
 public class LinkedList{
       public static class ListNode{
             public int val;
