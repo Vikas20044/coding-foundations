@@ -25,40 +25,31 @@ public class addTwoNumbers{
             }
             return dummy.next;
       }
-            
 
-      public static ListNode insertAtEnd(int val,ListNode head){
-            ListNode newNode = new ListNode(val);
-            if(head==null){
-                  head=newNode;
-                  return head;
+      public static void main(String[] args) {
+            ListNode l1=new ListNode(0);
+            ListNode tail1=l1;
+            int[] arr1 = {9,9,9,9,9,9,9};
+            for(int i=0; i<arr1.length; i++){
+                  tail1.next = new ListNode(arr1[i]);
+                  tail1=tail1.next;
             }
-            ListNode temp=head;
-            while(temp.next!=null){
-                  temp=temp.next;
+             ListNode l2=new ListNode(0);
+            ListNode tail2=l2;
+            int[] arr2 = {9,9,9,9};
+            for(int i=0; i<arr2.length; i++){
+                  tail2.next = new ListNode(arr2[i]);
+                  tail2=tail2.next;
             }
-            temp.next=newNode;
-            return head;
+            l1=l1.next;
+            l2=l2.next;
+            ListNode res = addNumber(l1, l2);
 
+            while(res!=null){
+                  System.out.print(res.val+" ");
+                  res=res.next;
+            }
+      
       }
-    public static void main(String[] args) {
-        ListNode l1=null;
-        int[] arr1 = {9,9,9,9,9,9,9};
-        for(int i=0; i<arr1.length; i++){
-            l1=insertAtEnd(arr1[i],l1);
-        }
-        ListNode l2=null;
-        int[] arr2 = {9,9,9,9};
-        for(int i=0; i<arr2.length; i++){
-            l2=insertAtEnd(arr2[i],l2);
-        }
-        ListNode res = addNumber(l1, l2);
-
-        while(res!=null){
-            System.out.print(res.val+" ");
-            res=res.next;
-        }
-
-        
-    }
+    
 }
